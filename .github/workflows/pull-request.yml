@@ -1,6 +1,6 @@
 name: Pull request workflow
 on:
-  pull_request:
+  push:
     branches:
       - main
       - develop
