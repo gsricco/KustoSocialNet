@@ -21,7 +21,7 @@ jobs:
           key: node-modules-${{ hashFiles('**/package.json')}}
       - name: Install dependencies
         run: yarn
-      - name: Build application
-        run: yarn run build
       - name: Lint application
         run: yarn run lint
+      - name: Build application
+        run: yarn run build
