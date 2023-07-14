@@ -1,27 +1,26 @@
 import React, {useEffect, useState} from "react";
 import {Form, Formik} from "formik";
-import {FormValueProfile, ResetForm} from "../../../common/components/Formik/types";
-import {Button} from "../../../common/components/Button/Button";
-import {FormikLabel} from "../../../common/components/Formik/FormikLabel";
-import {validateProfile} from "../../../common/utils/validateProfile";
-import {SettingsPageWrapper} from "../../../features/settings/SettingsPageWrapper";
+import {FormValueProfile, ResetForm} from "@/common/components/Formik/types";
+import {Button} from "@/common/components/Button/Button";
+import {FormikLabel} from "@/common/components/Formik/FormikLabel";
+import {validateProfile} from "@/common/utils/validateProfile";
+import {SettingsPageWrapper} from "@/features/settings/SettingsPageWrapper";
 import {
   useLazyAuthMeQuery,
   useLazyProfileQuery,
   useSaveProfileInfoMutation
-} from "../../../assets/store/api/profile/profileApi";
-import {ThemeButton} from "../../../common/enums/themeButton";
-import {useSetProfileMutation} from "../../../assets/store/api/auth/authApi";
+} from "@/assets/store/api/profile/profileApi";
+import {ThemeButton} from "@/common/enums/themeButton";
 import PhotoSelectModal from "@/features/profile/PhotoSelectModal";
-import { getLayout } from "../../../common/components/Layout/SettingsLayout/SettingsLayout";
+import {getLayout} from "@/common/components/Layout/SettingsLayout/SettingsLayout";
 import styled from "styled-components";
-import {baseTheme} from "../../../styles/styledComponents/theme";
+import {baseTheme} from "@/styles/styledComponents/theme";
 
-export type AuthMeType = {
-  email: string;
-  id: string;
-  login: string;
-};
+// export type AuthMeType = {
+//   email: string;
+//   id: string;
+//   login: string;
+// };
 
 const GeneralInformation = () => {
 
@@ -32,17 +31,10 @@ const GeneralInformation = () => {
   const [saveProfileInfoHandler] = useSaveProfileInfoMutation();
   const [getProfileInfo, {data}] = useLazyProfileQuery();
   const [authMeHandler, {data: usernameAuth}] = useLazyAuthMeQuery();
-  const [setProfileHandler] = useSetProfileMutation()
 
   const [isLoading, setIsLoading] = useState(false);
 
 
-  useEffect(() => {
-    authMeHandler();
-    getProfileInfo()
-      .unwrap()
-      .finally(() => setIsLoading(true));
-  }, []);
 
   const initialAuthValues = {
     username: data?.login || usernameAuth?.login || "",
@@ -67,6 +59,7 @@ const GeneralInformation = () => {
     };
     try {
       await saveProfileInfoHandler(data);
+      resetForm()
     } catch (error) {
     }
   };
@@ -80,6 +73,14 @@ const GeneralInformation = () => {
   }
 
 
+  useEffect(() => {
+    authMeHandler();
+    getProfileInfo()
+      .unwrap()
+      .finally(() => setIsLoading(true));
+  }, [authMeHandler,getProfileInfo]);
+
+
   return (
     <>
       {isLoading && (
@@ -88,7 +89,6 @@ const GeneralInformation = () => {
             <StyledAvatarBlock>
               <IconBlock>
                 <img src={avatar} alt="Avatar"/>
-                {/*<Image src={avatar} alt={"Avatar"} width={192} height={192}/>*/}
               </IconBlock>
 
               <Button theme={ThemeButton.OUTLINED} width={"100%"} onClick={handleAddPhoto}>

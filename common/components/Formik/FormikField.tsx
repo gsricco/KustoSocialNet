@@ -1,15 +1,14 @@
 import {Field} from "formik";
 import styled from "styled-components";
-import {baseTheme} from "../../../styles/styledComponents/theme";
-import {ChangeEvent} from "react";
+import {baseTheme} from "@/styles/styledComponents/theme";
+import {ChangeEvent, useState} from "react";
 import {FiledProps} from "./types";
-// import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
-// import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
-// import dayjs, {Dayjs} from "dayjs";
-// import {DemoContainer} from "@mui/x-date-pickers/internals/demo";
-// import {createTheme} from '@mui/material';
-// import {ThemeProvider} from "@emotion/react";
-/*
+import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
+import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
+import dayjs from "dayjs";
+import {DemoContainer} from "@mui/x-date-pickers/internals/demo";
+import {createTheme} from '@mui/material';
+import {ThemeProvider} from "@emotion/react";
 
 export const theme = createTheme({
   components: {
@@ -38,13 +37,12 @@ export const theme = createTheme({
         }
       }
     },
-
-
   }
 })
 
 const Calendar = () => {
-  const [value, setValue] = useState<Dayjs | null>(dayjs('1981-04-17'));
+  // const [value, setValue] = useState<Dayjs|null>(dayjs('1981-04-17'));
+  const [value, setValue] = useState<unknown>(dayjs('1981-04-17'));
 
   return (
     <ThemeProvider theme={theme}>
@@ -53,8 +51,8 @@ const Calendar = () => {
           <StyledDatePicker
             // label="Date of birthday"
             value={value}
+            onChange={(newValue) => setValue(newValue)}
             format={'DD/MM/YYYY'}
-            onChange={(newValue:any ) => setValue(newValue)}
             minDate={dayjs(new Date(1970, 11, 31))}
             maxDate={dayjs(new Date())}
 
@@ -83,15 +81,10 @@ const StyledDatePicker = styled(DatePicker)
   `
     background: ${baseTheme.colors.dark[500]};
     
-    & paper {
-      background: red;
-    }
-    
     & svg{
       fill:white;
     }
   `
-*/
 
 
 
@@ -109,12 +102,7 @@ export const FormikField = (props: FiledProps) => {
     )
     : props.type == "date" ?
       (
-        // <Calendar/>
-        <StyledField
-          {...props}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => props.onChange(e.target.value)}
-          width={props.width}
-        />
+        <Calendar/>
       )
       : (
         <StyledField
@@ -179,12 +167,7 @@ export const StyledField = styled(Field)`
     max-width: ${(props) => (props.width ? "40vw" : "330px")};
   }
 `;
-// const StyledTextArea = styled(StyledField)<TextAreaPropsType>
-// `
-//   max-width: ${props => props.width };
-//   width:100%;
-//   height: 250px;
-// `
+
 
 const StyledTextArea = styled.textarea<TextAreaPropsType>`
   max-width: ${(props) => (props.width ? props.width : "330px")};
