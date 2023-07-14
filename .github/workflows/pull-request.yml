@@ -20,7 +20,7 @@ jobs:
           path: ~/.npm
           key: node-modules-${{ hashFiles('**/package.json')}}
       - name: Install dependencies
-        run: yarn
+        run: yarn install
       - name: Lint application
         run: yarn run lint
       - name: Build application
