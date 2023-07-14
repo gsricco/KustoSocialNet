@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import {useRouter} from "next/router";
-import {useLazyCheckLinkHandlerQuery} from "../../../../assets/store/api/auth/authApi";
-import {codeCheckLink} from "../../../../common/utils/codeCheckLink";
-import {Path} from "../../../../common/enums/path";
+import {useLazyCheckLinkHandlerQuery} from "@/assets/store/api/auth/authApi";
+import {codeCheckLink} from "@/common/utils/codeCheckLink";
+import {Path} from "@/common/enums/path";
 
 export const CheckLink = () => {
   const {code} = codeCheckLink()

@@ -2,40 +2,40 @@ import React, { useState } from "react";
 import { Formik } from "formik";
 import showPasswordBtn from "../../../public/img/icons/eye-outline.svg";
 import hidePasswordBtn from "../../../public/img/icons/eye-off-outline.svg";
-import { getLayout } from "../../../common/components/Layout/BaseLayout/BaseLayout";
-import { useShowPassword } from "../../../common/hooks/useShowPassword";
+import { getLayout } from "@/common/components/Layout/BaseLayout/BaseLayout";
+import { useShowPassword } from "@/common/hooks/useShowPassword";
 import {
   validateRegistrationEn,
   validateRegistrationRu
-} from "../../../common/utils/validateRegistraition";
-import AuthIcons from "../../../features/auth/AuthIcons";
-import { WrapperContainerAuth } from "../../../features/auth/WrapperContainerAuth";
-import { Button } from "../../../common/components/Button/Button";
-import { FormikLabel } from "../../../common/components/Formik/FormikLabel";
-import { useRegistrationMutation } from "../../../assets/store/api/auth/authApi";
+} from "@/common/utils/validateRegistraition";
+import AuthIcons from "@/features/auth/AuthIcons";
+import { WrapperContainerAuth } from "@/features/auth/WrapperContainerAuth";
+import { Button } from "@/common/components/Button/Button";
+import { FormikLabel } from "@/common/components/Formik/FormikLabel/FormikLabel";
+import { useRegistrationMutation } from "@/assets/store/api/auth/authApi";
 import {
   FormValueRegistration,
   ResetForm,
   SetFieldErrorType
-} from "../../../common/components/Formik/types";
-import { RegistrationResponseError } from "../../../assets/store/api/auth/types";
-import { StyledContainerAuth } from "../../../styles/styledComponents/auth/Auth.styled";
+} from "@/common/components/Formik/types";
+import { RegistrationResponseError } from "@/assets/store/api/auth/types";
+import { StyledContainerAuth } from "@/styles/styledComponents/auth/Auth.styled";
 import {
   StyledAuthForm,
   StyledShowPasswordBtn,
   StyledSignIn,
   StyledSignInWrapper,
   StyledText
-} from "../../../styles/styledComponents/auth/FormikAuth.styled";
+} from "@/styles/styledComponents/auth/FormikAuth.styled";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticPropsContext } from "next";
-import config from "../../../next-i18next.config.js";
+import config from "@/next-i18next.config.js";
 import { useTranslation } from "next-i18next";
 import { Modal } from "@/common/components/Modal";
 import { useRouter } from "next/router";
-import { Path } from "../../../common/enums/path";
-import { ThemeButton } from "../../../common/enums/themeButton";
-import { useLocalStorage } from "../../../common/hooks/useLocalStorage";
+import { Path } from "@/common/enums/path";
+import { ThemeButton } from "@/common/enums/themeButton";
+import { useLocalStorage } from "@/common/hooks/useLocalStorage";
 
 export async function getStaticProps(context: GetStaticPropsContext) {
   const {locale} = context

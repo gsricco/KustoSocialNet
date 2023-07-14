@@ -1,18 +1,18 @@
 import React from "react"
-import {getLayout} from "../../../../common/components/Layout/BaseLayout/BaseLayout"
+import {getLayout} from "@/common/components/Layout/BaseLayout/BaseLayout"
 import {useRouter} from 'next/router';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
 import {GetStaticPropsContext} from "next"
-import config from 'next-i18next.config.js'
+import config from '@/next-i18next.config.js'
 import {useTranslation} from 'next-i18next'
-import VerificationWindow from "features/auth/VerificationWindow"
-import {Path} from "../../../../common/enums/path";
+import VerificationWindow from "@/features/auth/VerificationWindow"
+import {Path} from "@/common/enums/path";
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const {locale} = context as any
+  const {locale} = context
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common"], config)),
+      ...(await serverSideTranslations(locale?locale:'', ["common"], config)),
     }
   }
 }

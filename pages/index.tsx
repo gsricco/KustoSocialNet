@@ -8,10 +8,9 @@ import {Path} from "@/common/enums/path";
 import kusto from "../public/img/kusto.png"
 import config from "@/next-i18next.config";
 
+
 export async function getStaticProps(context: GetStaticPropsContext) {
-
   const {locale} = context
-
   return {
     props: {
       ...(await serverSideTranslations(locale?locale:'', ["common"], config)),

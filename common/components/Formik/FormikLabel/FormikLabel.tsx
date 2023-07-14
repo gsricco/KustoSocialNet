@@ -1,8 +1,7 @@
-import { FormikField } from "./FormikField";
+import {FormikField} from "../FormikField/FormikField";
 import React from "react";
-import styled from "styled-components";
-import { baseTheme } from "../../../styles/styledComponents/theme";
-import { labelType } from "./types";
+import {labelType} from "../types";
+import {StyledErrorMsg, StyledTitle} from "@/common/components/Formik/Formik.styled";
 
 export const FormikLabel = ({
   title,
@@ -66,26 +65,3 @@ export const FormikLabel = ({
     </label>
   );
 };
-
-type StyledErrorMsgPropsType = {
-  errorShow?: boolean;
-};
-
-const StyledErrorMsg = styled.div<StyledErrorMsgPropsType>`
-  width: 100%;
-  height: ${(props) => (props.errorShow ? "" : "30px")};
-
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-
-  color: ${baseTheme.colors.danger["500"]};
-`;
-
-const StyledTitle = styled(StyledErrorMsg)`
-  color: ${baseTheme.colors.light["900"]};
-
-  & span::first-letter {
-    text-transform: uppercase;
-  }
-`;

@@ -1,12 +1,13 @@
 import type {AppProps} from 'next/app';
 import {ReactElement, ReactNode} from 'react';
 import {NextPage} from 'next';
-import {useLoader} from '../common/hooks/useLoader';
+import {useLoader} from '@/common/hooks/useLoader';
 import 'styles/nprogress.css'
 import '../styles/globals.css'
 import {appWithTranslation} from 'next-i18next'
 
-export type NextPageWithLayout<P = {}> = NextPage<P> & {
+// export type NextPageWithLayout<P = {} > = NextPage<P> & {
+export type NextPageWithLayout<P = unknown > = NextPage<P> & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
 

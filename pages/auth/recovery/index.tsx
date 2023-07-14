@@ -1,37 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
-import { getLayout } from "../../../common/components/Layout/BaseLayout/BaseLayout";
-import { WrapperContainerAuth } from "../../../features/auth/WrapperContainerAuth";
-import { Button } from "../../../common/components/Button/Button";
-import { FormikLabel } from "../../../common/components/Formik/FormikLabel";
+import { getLayout } from "@/common/components/Layout/BaseLayout/BaseLayout";
+import { WrapperContainerAuth } from "@/features/auth/WrapperContainerAuth";
+import { Button } from "@/common/components/Button/Button";
+import { FormikLabel } from "@/common/components/Formik/FormikLabel/FormikLabel";
 import {
   StyledAuthForm,
   StyledRecoveryWrapper,
   StyledSignIn,
   StyledSignInWrapper,
   StyledText
-} from "../../../styles/styledComponents/auth/FormikAuth.styled";
-import { useSendRecoveryLinkMutation } from "../../../assets/store/api/auth/authApi";
-import { FormValueRecovery, ResetForm } from "../../../common/components/Formik/types";
-import { validateRecoveryEn, validateRecoveryRu } from "../../../common/utils/validateRecovery";
-import { baseTheme } from "../../../styles/styledComponents/theme";
+} from "@/styles/styledComponents/auth/FormikAuth.styled";
+import { useSendRecoveryLinkMutation } from "@/assets/store/api/auth/authApi";
+import { FormValueRecovery, ResetForm } from "@/common/components/Formik/types";
+import { validateRecoveryEn, validateRecoveryRu } from "@/common/utils/validateRecovery";
+import { baseTheme } from "@/styles/styledComponents/theme";
 import Image from "next/image";
-import { StyledContainerAuth } from "../../../styles/styledComponents/auth/Auth.styled";
+import { StyledContainerAuth } from "@/styles/styledComponents/auth/Auth.styled";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticPropsContext } from "next";
-import config from "next-i18next.config.js";
+import config from "@/next-i18next.config.js";
 import { useTranslation } from "next-i18next";
-import { ThemeButton } from "../../../common/enums/themeButton";
-import { Path } from "../../../common/enums/path";
-import { Modal } from "common/components/Modal";
+import { ThemeButton } from "@/common/enums/themeButton";
+import { Path } from "@/common/enums/path";
+import { Modal } from "@/common/components/Modal";
+
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const { locale } = context as any;
+  const {locale} = context
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common"], config))
+      ...(await serverSideTranslations(locale?locale:'', ["common"], config)),
     }
-  };
+  }
 }
 
 export default function Recovery() {

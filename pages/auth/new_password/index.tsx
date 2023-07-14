@@ -1,42 +1,43 @@
 import React from "react";
 import { Formik } from "formik";
-import showPasswordBtn from "../../../public/img/icons/eye-outline.svg";
-import hidePasswordBtn from "../../../public/img/icons/eye-off-outline.svg";
-import { getLayout } from "../../../common/components/Layout/BaseLayout/BaseLayout";
-import { useShowPassword } from "../../../common/hooks/useShowPassword";
-import { WrapperContainerAuth } from "../../../features/auth/WrapperContainerAuth";
-import { useNewPasswordMutation } from "../../../assets/store/api/auth/authApi";
-import { FormNewPasswordType, ResetForm } from "../../../common/components/Formik/types";
+import showPasswordBtn from "@/public/img/icons/eye-outline.svg";
+import hidePasswordBtn from "@/public/img/icons/eye-off-outline.svg";
+import { getLayout } from "@/common/components/Layout/BaseLayout/BaseLayout";
+import { useShowPassword } from "@/common/hooks/useShowPassword";
+import { WrapperContainerAuth } from "@/features/auth/WrapperContainerAuth";
+import { useNewPasswordMutation } from "@/assets/store/api/auth/authApi";
+import { FormNewPasswordType, ResetForm } from "@/common/components/Formik/types";
 import {
   StyledAuthForm,
   StyledShowPasswordBtn,
   StyledSignInWrapper,
   StyledText
-} from "../../../styles/styledComponents/auth/FormikAuth.styled";
-import { FormikLabel } from "../../../common/components/Formik/FormikLabel";
-import { Button } from "../../../common/components/Button/Button";
+} from "@/styles/styledComponents/auth/FormikAuth.styled";
+import { FormikLabel } from "@/common/components/Formik/FormikLabel/FormikLabel";
+import { Button } from "@/common/components/Button/Button";
 import {
   validateNewPasswordEn,
   validateNewPasswordRu
-} from "../../../common/utils/validateNewPassword";
+} from "@/common/utils/validateNewPassword";
 import { useRouter } from "next/router";
-import { StyledContainerAuth } from "../../../styles/styledComponents/auth/Auth.styled";
+import { StyledContainerAuth } from "@/styles/styledComponents/auth/Auth.styled";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticPropsContext } from "next";
-import config from "next-i18next.config.js";
+import config from "@/next-i18next.config";
 import { useTranslation } from "next-i18next";
-import { RegistrationResponseError } from "assets/store/api/auth/types";
-import { Path } from "../../../common/enums/path";
-import { ThemeButton } from "../../../common/enums/themeButton";
-import { baseTheme } from "styles/styledComponents/theme";
+import { RegistrationResponseError } from "@/assets/store/api/auth/types";
+import { Path } from "@/common/enums/path";
+import { ThemeButton } from "@/common/enums/themeButton";
+import { baseTheme } from "@/styles/styledComponents/theme";
+
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const { locale } = context as any;
+  const {locale} = context
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common"], config))
+      ...(await serverSideTranslations(locale?locale:'', ["common"], config)),
     }
-  };
+  }
 }
 
 export default function NewPassword() {

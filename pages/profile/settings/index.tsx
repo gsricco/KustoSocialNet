@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Form, Formik} from "formik";
 import {FormValueProfile, ResetForm} from "@/common/components/Formik/types";
 import {Button} from "@/common/components/Button/Button";
-import {FormikLabel} from "@/common/components/Formik/FormikLabel";
+import {FormikLabel} from "@/common/components/Formik/FormikLabel/FormikLabel";
 import {validateProfile} from "@/common/utils/validateProfile";
 import {SettingsPageWrapper} from "@/features/settings/SettingsPageWrapper";
 import {
@@ -88,7 +88,9 @@ const GeneralInformation = () => {
           <StyledContent>
             <StyledAvatarBlock>
               <IconBlock>
+                <picture>
                 <img src={avatar} alt="Avatar"/>
+                </picture>
               </IconBlock>
 
               <Button theme={ThemeButton.OUTLINED} width={"100%"} onClick={handleAddPhoto}>
