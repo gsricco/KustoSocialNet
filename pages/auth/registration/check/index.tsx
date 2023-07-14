@@ -19,7 +19,7 @@ export const CheckLink = () => {
       .catch(() => {
         router.push(Path.REGISTRATION_ERROR)
       })
-  },[])
+  },[checkLinkHandler, code, router])
 
 
   return (
