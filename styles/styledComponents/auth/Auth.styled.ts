@@ -1,4 +1,4 @@
-import {FormAuthPropsType} from "../../../features/auth/types";
+import {FormAuthPropsType} from "@/features/auth/types";
 import styled from "styled-components";
 import Link from "next/link";
 import {baseTheme} from "../theme";
