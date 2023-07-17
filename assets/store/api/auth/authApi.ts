@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import {loadState} from '../../../../common/components/localStorage/localStorage';
+import {loadState} from '@/common/components/localStorage/localStorage';
 import {
   CheckLinkType,
   LoginResponseType,
@@ -10,7 +10,7 @@ import {
   RegistrationType,
   SendLinkType
 } from "./types";
-import {LOCAL_STORAGE_ACCESS_TOKEN_KEY} from "../../../../common/components/localStorage/types";
+import {LOCAL_STORAGE_ACCESS_TOKEN_KEY} from "@/common/components/localStorage/types";
 
 
 
@@ -32,13 +32,12 @@ export const authApi = createApi({
         // body: JSON.stringify(body),
       };
 
-      const response = await fetch(url, options);
 
-      return response
+      return  await fetch(url, options);
     },
   }),
   endpoints: (builder) => ({
-    registration: builder.mutation<any, RegistrationType>({
+    registration: builder.mutation<unknown, RegistrationType>({
       query: (body) => ({
         url: "auth/registration",
         method: "POST",
@@ -52,7 +51,7 @@ export const authApi = createApi({
         body
       })
     }),
-    sendRecoveryLink: builder.mutation<any, SendLinkType>({
+    sendRecoveryLink: builder.mutation<unknown, SendLinkType>({
       query: (body) => ({
         method: "POST",
         url: `/auth/password-recovery`,
@@ -68,7 +67,7 @@ export const authApi = createApi({
         };
       },
     }),
-    checkLinkHandler: builder.query<any, CheckLinkType>({
+    checkLinkHandler: builder.query<unknown, CheckLinkType>({
       query: (code) => {
         return {
           method: "GET",
@@ -76,7 +75,7 @@ export const authApi = createApi({
         };
       },
     }),
-    refreshLink: builder.mutation<any, any>({
+    refreshLink: builder.mutation<unknown, unknown>({
       query: (body) => {
         return {
           method: "POST",
@@ -111,7 +110,7 @@ export const {
   useSendRecoveryLinkMutation,
   useNewPasswordMutation,
   useLogoutMutation,
-  useSetProfileMutation,
+  // useSetProfileMutation,
   useLazyCheckLinkHandlerQuery,
   useRefreshLinkMutation
 } = authApi

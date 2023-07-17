@@ -16,11 +16,6 @@ import {getLayout} from "@/common/components/Layout/SettingsLayout/SettingsLayou
 import styled from "styled-components";
 import {baseTheme} from "@/styles/styledComponents/theme";
 
-// export type AuthMeType = {
-//   email: string;
-//   id: string;
-//   login: string;
-// };
 
 const GeneralInformation = () => {
 
@@ -33,7 +28,6 @@ const GeneralInformation = () => {
   const [authMeHandler, {data: usernameAuth}] = useLazyAuthMeQuery();
 
   const [isLoading, setIsLoading] = useState(false);
-
 
 
   const initialAuthValues = {

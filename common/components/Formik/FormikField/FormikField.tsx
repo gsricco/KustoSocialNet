@@ -7,13 +7,13 @@ import {StyledField} from "@/common/components/Formik/Formik.styled";
 
 export const FormikField = (props: FiledProps) => {
 
-  return props.type == "textarea"
+  return props.type === "textarea"
     ? <FieldTextarea
         {...props}
         onChange={(e) => props.onChange(e.target.value)}
         width={props.width}
       />
-    : props.type == "date"
+    : props.type === "date"
       ? <Calendar/>
       : <StyledField
           {...props}

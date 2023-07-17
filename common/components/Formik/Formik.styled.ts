@@ -7,10 +7,29 @@ import {DemoContainer} from "@mui/x-date-pickers/internals/demo";
 
 
 //FormikLabel
+export const StyledInputContainer = styled.div`
+  position: relative;
+`;
+
+export const StyledLabel = styled.label<{ withError: boolean; marginBottom?: string }>`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  font-family: Inter;
+  font-size: 16px;
+
+  margin-bottom: ${(props) => (props.withError ? 0 : props.marginBottom || "24px")};
+`;
+
 export const StyledErrorMsg = styled.div<StyledErrorMsgPropsType>`
   width: 100%;
-  height: ${(props) => (props.errorShow ? "" : "30px")};
-
+  font-family: Inter;
+  font-weight: 400;
+  letter-spacing: 0em;
+  text-align: left;
+  line-height: 24px;
+  font-size: 14px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -26,7 +45,6 @@ export const StyledTitle = styled(StyledErrorMsg)`
   }
 `;
 
-
 //FormikField
 export const StyledField = styled(Field)`
   max-width: ${(props) => (props.width ? props.width : "330px")};
@@ -40,10 +58,10 @@ export const StyledField = styled(Field)`
   outline: none;
   border-radius: 2px;
   border: ${(props) =>
-  props.border === "red"
-    ? `1px solid ${baseTheme.colors.danger[500]}`
-    : `1px solid ${baseTheme.colors.dark[100]}`
-};
+          props.border === "red"
+                  ? `1px solid ${baseTheme.colors.danger[500]}`
+                  : `1px solid ${baseTheme.colors.dark[100]}`
+  };
   background: ${baseTheme.colors.dark[500]};
   color: ${baseTheme.colors.light[100]};
   box-shadow: inset 0 0 0 50px ${baseTheme.colors.dark[500]};
@@ -63,30 +81,28 @@ export const StyledField = styled(Field)`
 `;
 
 //Calendar
-
-export const StyledLocalizationProvider= styled(LocalizationProvider)
+export const StyledLocalizationProvider = styled(LocalizationProvider)
   `
-background: red;
-`
+    background: red;
+  `
 
 
 export const StyledDemoContainer = styled(DemoContainer)
   `
     // color: white;
-     background: ${baseTheme.colors.dark[500]};
+    background: ${baseTheme.colors.dark[500]};
     // border: 1px solid white;
   `
 export const StyledDatePicker = styled(DatePicker)
   `
     background: ${baseTheme.colors.dark[500]};
-    
-    & svg{
-      fill:white;
+
+    & svg {
+      fill: white;
     }
   `
 
 //FieldTextarea
-
 export const StyledTextArea = styled.textarea<TextAreaPropsType>`
   max-width: ${(props) => (props.width ? props.width : "330px")};
   width: 100%;
@@ -99,9 +115,9 @@ export const StyledTextArea = styled.textarea<TextAreaPropsType>`
   outline: none;
   border-radius: 2px;
   border: ${(props) =>
-  props.border === "red"
-    ? `1px solid ${baseTheme.colors.danger[500]}`
-    : `1px solid ${baseTheme.colors.dark[100]}`};
+          props.border === "red"
+                  ? `1px solid ${baseTheme.colors.danger[500]}`
+                  : `1px solid ${baseTheme.colors.dark[100]}`};
   background: ${baseTheme.colors.dark[500]};
   color: ${baseTheme.colors.light[100]};
   box-shadow: inset 0 0 0 50px ${baseTheme.colors.dark[500]};
