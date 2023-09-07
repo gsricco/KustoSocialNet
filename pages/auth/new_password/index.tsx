@@ -13,7 +13,6 @@ import {
   StyledSignInWrapper,
   StyledText
 } from "@/styles/styledComponents/auth/FormikAuth.styled";
-import { FormikLabel } from "@/common/components/Formik/FormikLabel/FormikLabel";
 import { Button } from "@/common/components/Button/Button";
 import {
   validateNewPasswordEn,
@@ -29,6 +28,7 @@ import { RegistrationResponseError } from "@/assets/store/api/auth/types";
 import { Path } from "@/common/enums/path";
 import { ThemeButton } from "@/common/enums/themeButton";
 import { baseTheme } from "@/styles/styledComponents/theme";
+import {FormikLabel} from "@/common/components/Formik/FormikLabel";
 
 
 export async function getStaticProps(context: GetStaticPropsContext) {

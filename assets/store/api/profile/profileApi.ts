@@ -36,8 +36,8 @@ export const profileApi = createApi({
         method: "GET"
       })
     }),
-    saveAvatar: builder.mutation<undefined, AvatarType>({
-      query: (body: unknown) => {
+    saveAvatar: builder.mutation<void, FormData>({
+      query: (body: FormData) => {
         return {
           method: "POST",
           url: `users/profiles/save-avatar`,

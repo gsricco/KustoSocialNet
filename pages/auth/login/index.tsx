@@ -19,7 +19,6 @@ import {
 import AuthIcons from "@/features/auth/AuthIcons";
 import {useShowPassword} from "@/common/hooks/useShowPassword";
 import {validateLoginEn, validateLoginRu} from "@/common/utils/validateLogin";
-import {FormikLabel} from "@../../../common/components/Formik/FormikLabel/FormikLabel";
 import {Button} from "@/common/components/Button/Button";
 import {getLayout} from "@/common/components/Layout/BaseLayout/BaseLayout";
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
@@ -29,6 +28,7 @@ import {useTranslation} from 'next-i18next'
 import {ThemeButton} from "@/common/enums/themeButton";
 import {Path} from "@/common/enums/path";
 import {useLocalStorage} from '@/common/hooks/useLocalStorage';
+import {FormikLabel} from "@/common/components/Formik/FormikLabel";
 
 
 export async function getStaticProps(context: GetStaticPropsContext) {
@@ -82,13 +82,13 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     return (
       <StyledContainerAuth>
         <WrapperContainerAuth title={t("signIn_title")}>
-          <AuthIcons/>
+          <AuthIcons />
           <Formik
             initialValues={initialAuthValues}
-            validationSchema={i18n.language == 'en' ? validateLoginEn : validateLoginRu}
+            validationSchema={i18n.language == "en" ? validateLoginEn : validateLoginRu}
             onSubmit={handleSubmit}
           >
-            {({errors, touched, values, setFieldValue}) => (
+            {({ errors, touched, values, setFieldValue }) => (
               <StyledAuthForm>
                 <FormikLabel
                   name="loginOrEmail"
@@ -119,7 +119,9 @@ export async function getStaticProps(context: GetStaticPropsContext) {
                   />
                 </FormikLabel>
                 <StyledLinkBlock>
-                  <StyledForgotLink href="/auth/recovery">{t("forgotPassword_link")}</StyledForgotLink>
+                  <StyledForgotLink href="/auth/recovery">
+                    {t("forgotPassword_link")}
+                  </StyledForgotLink>
                 </StyledLinkBlock>
                 <Button theme={ThemeButton.PRIMARY} type="submit">
                   {t("signIn_title")}
@@ -133,8 +135,9 @@ export async function getStaticProps(context: GetStaticPropsContext) {
           </StyledSignInWrapper>
         </WrapperContainerAuth>
       </StyledContainerAuth>
-    )
-  }
+    );
+  };
 
-  Login.getLayout = getLayout
+
+Login.getLayout = getLayout
   export default Login;

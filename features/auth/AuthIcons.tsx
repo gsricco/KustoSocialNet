@@ -1,9 +1,9 @@
 import React from 'react';
 import Image from "next/image";
-import google from "@/public/img/icons/google-svgrepo-com.svg";
-import github from "@/public/img/icons/github-svgrepo-com.svg";
+import google from "../../public/img/icons/google-svgrepo-com.svg";
+import github from "../../public/img/icons/github-svgrepo-com.svg";
 import styled from "styled-components";
-import {baseTheme} from "@/styles/styledComponents/theme";
+import {baseTheme} from "../../styles/styledComponents/theme";
 
 const AuthIcons = () => {
   return (

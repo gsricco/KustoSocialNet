@@ -1,5 +1,5 @@
 import { FormikErrors, FormikState, FormikTouched } from "formik";
-import React, {ChangeEvent} from "react";
+import React from "react";
 
 type FormikAllValuesType = {
   username?: string;
@@ -92,24 +92,11 @@ export type FiledProps = {
   name?: string;
   value: string;
   onChange: (value: string) => void;
+  // onChange: ChangeEvent<HTMLTextAreaElement> | ((value: string) => void);
   width?: string;
   textAreaData?: string;
 };
 
 export type SetFieldErrorType = {
   setFieldError: (field: string, message: string | undefined) => void;
-};
-export type TextAreaPropsType = {
-  id?: string;
-  type?: string;
-  border?: string;
-  name?: string;
-  value?: string;
-  onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
-  width?: string;
-  textAreaData?: string;
-};
-
-export type StyledErrorMsgPropsType = {
-  errorShow?: boolean;
 };

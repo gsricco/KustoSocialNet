@@ -3,7 +3,6 @@ import { Formik } from "formik";
 import { getLayout } from "@/common/components/Layout/BaseLayout/BaseLayout";
 import { WrapperContainerAuth } from "@/features/auth/WrapperContainerAuth";
 import { Button } from "@/common/components/Button/Button";
-import { FormikLabel } from "@/common/components/Formik/FormikLabel/FormikLabel";
 import {
   StyledAuthForm,
   StyledRecoveryWrapper,
@@ -24,6 +23,7 @@ import { useTranslation } from "next-i18next";
 import { ThemeButton } from "@/common/enums/themeButton";
 import { Path } from "@/common/enums/path";
 import { Modal } from "@/common/components/Modal";
+import {FormikLabel} from "@/common/components/Formik/FormikLabel";
 
 
 export async function getStaticProps(context: GetStaticPropsContext) {

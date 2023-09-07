@@ -11,7 +11,6 @@ import {
 import AuthIcons from "@/features/auth/AuthIcons";
 import { WrapperContainerAuth } from "@/features/auth/WrapperContainerAuth";
 import { Button } from "@/common/components/Button/Button";
-import { FormikLabel } from "@/common/components/Formik/FormikLabel/FormikLabel";
 import { useRegistrationMutation } from "@/assets/store/api/auth/authApi";
 import {
   FormValueRegistration,
@@ -36,6 +35,7 @@ import { useRouter } from "next/router";
 import { Path } from "@/common/enums/path";
 import { ThemeButton } from "@/common/enums/themeButton";
 import { useLocalStorage } from "@/common/hooks/useLocalStorage";
+import {FormikLabel} from "@/common/components/Formik/FormikLabel";
 
 export async function getStaticProps(context: GetStaticPropsContext) {
   const {locale} = context

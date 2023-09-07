@@ -1,6 +1,6 @@
 import React from 'react';
-import {SettingsPageWrapper} from '@/features/settings/SettingsPageWrapper';
-import {getLayout} from '@/common/components/Layout/SettingsLayout/SettingsLayout';
+import {SettingsPageWrapper} from '../../../../features/settings/SettingsPageWrapper';
+import {getLayout} from '../../../../common/components/Layout/SettingsLayout/SettingsLayout';
 
 const Payments = () => {
 
