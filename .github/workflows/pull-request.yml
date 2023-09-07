@@ -2,7 +2,7 @@ name: Pull request workflow
 on:
   pull_request:
     branches:
-      - main
+      - master
       - develop
 jobs:
   deploy:
@@ -20,8 +20,8 @@ jobs:
           path: ~/.npm
           key: node-modules-${{ hashFiles('**/package.json')}}
       - name: Install dependencies
-        run: yarn
-      - name: Build application
-        run: yarn run build
+        run: yarn install
       - name: Lint application
         run: yarn run lint
+      - name: Build application
+        run: yarn run build
